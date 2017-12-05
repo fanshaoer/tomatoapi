@@ -1,0 +1,109 @@
+<!doctype html>
+<html ng-app="tomatoApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="tomato.js"></script>
+    <link rel="stylesheet" href="tomato.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <!-- <link href="css/simple-sidebar.css" rel="stylesheet"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="lib/dirPagination.js"></script>
+  </head>
+  <body class="info">
+      <div ng-controller="topixController">
+        <!--header--> 
+        <div>
+          <nav class="navbar navbar-default"> <!-- navbar-fixed-top -->
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">{{user.email}}さん</a>
+              </div>
+              <div>
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="./topix.html">今日のTOPIX</a></li>
+                  <li><a href="./house.html">ハウス状況</a></li>
+                  <li><a href="./todaysts.html">本日の作業状況</a></li> 
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+                  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                  <li><a href="./login.html"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>  
+        </div>
+        <!--//# header -->
+        <div class="row">
+              <div class="span2 col-sm-3 col-md-2">
+                 <div class="well">
+                     <ul class="nav nav-list" id="my-collapse-nav">
+                         <li class="nav-header">対象HOUSE</li>
+                         <li class="divider"></li>
+                         <li ng-click="navSelected($event)" class="active"><a href="#">全て</a></li>
+                         <li ng-repeat="d in houselist">
+                            <a href="#" data-target="#demo{{$index}}" ng-click="navSelected($event)">{{d.name}}</a>
+                            <ul id="demo{{$index}}" class="collapse" style="height: 0px;">
+                               <li><a href="#">Group1</a></li>
+                               <li><a href="#">Group2</a></li>
+                               <li><a href="#">Group3</a></li>
+                            </ul>
+                         </li>
+                         <!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a> -->
+                     </ul>
+                 </div>
+               </div>
+               <div class="container col-sm-8">
+                  <h2>{{navitem}}</h2>
+                  <blockquote>
+                    <p><strong>Tip:</strong> Change ↑　by clicking nav-bar</p>
+                  </blockquote>
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#temp"><span class="glyphicon glyphicon-warning-sign"/>ウォーキング情報</a></li>
+                    <li><a data-toggle="tab" href="#milestone"><span class="glyphicon glyphicon-info-sign"/>直近のマイルストーン情報</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div id="temp" class="tab-pane fade in active">
+                      <div class="alert alert-danger" role="alert">
+                        <h3 class="warning">Waring!</h3>
+                        <p class="warning">温度が低いです。温度を上げてください。</p>
+                        <p class="warning">温度が低いです。温度を上げてください。</p>
+                        <p class="warning">温度が低いです。温度を上げてください。</p>
+                        <p class="warning">温度が低いです。温度を上げてください。</p>
+                        <p class="warning">温度が低いです。温度を上げてください。</p>
+                        <p class="warning">温度が低いです。温度を上げてください。</p>
+                        <p class="warning">温度が低いです。温度を上げてください。</p>
+                      </div>
+                    </div>
+                    <div id="milestone" class="tab-pane fade">
+                      <div class="alert alert-success" role="alert">
+                        <h3>Wmilestone</h3>
+                        <p>milestonemilestonemilestonemilestone</p>
+                        <p>milestonemilestonemilestonemilestone</p>
+                        <p>milestonemilestonemilestonemilestone</p>
+                        <p>milestonemilestonemilestonemilestone</p>
+                        <p>milestonemilestonemilestonemilestone</p>
+                      </div> 
+                    </div>
+                  </div>
+              </div>
+        </div>
+      </div>
+  </body>
+</html>
+<script type="text/javascript" charset="utf-8" async defer>
+    $(document).ready(function() {
+        $("#my-collapse-nav > li > a[data-target]").parent('li').hover(
+            function() { $($(this).children('a[data-target]').data('target')).collapse('show') },
+            function() { $($(this).children('a[data-target]').data('target')).collapse('hide') }
+        );
+    });
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+
+</script>

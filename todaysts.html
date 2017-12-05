@@ -1,0 +1,77 @@
+<!doctype html>
+<html ng-app="tomatoApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="tomato.js"></script>
+    <link rel="stylesheet" href="tomato.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="lib/dirPagination.js"></script>
+  </head>
+  <body class="info">
+      <div ng-controller="todaystsController">
+        <!--header--> 
+        <div>
+          <nav class="navbar navbar-default"> <!-- navbar-fixed-top -->
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">{{user.email}}さん</a>
+              </div>
+              <div>
+                <ul class="nav navbar-nav">
+                  <li><a href="./topix.html">今日のTOPIX</a></li>
+                  <li><a href="./house.html">ハウス状況</a></li>
+                  <li class="active"><a href="./todaysts.html">本日の作業状況</a></li> 
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+                  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                  <li><a href="./login.html"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>  
+        </div>
+        <!--//# header -->
+        <div class="row">
+          <div class="col-sm-3 col-md-2 sidebar">
+              <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">全て <span class="sr-only">(current)</span></a></li>
+                <li ng-repeat="h in houselist" class="dropup">
+                  <a ng-click="goDetail(h)" class="dropdown-toggle" data-toggle="dropdown" href="#">{{h.name}}
+                  <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Group1</a></li>
+                    <li><a href="#">Group2</a></li>
+                    <li><a href="#">Group3</a></li> 
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          <div class="list-group col-sm-8 col-md-8">
+            <button type="button" class="btn btn-success">履歴も表示</button>
+            <br><br>
+            <select multiple class="form-control">
+              <option  ng-repeat="d in housedetails">
+                {{d.houseName}}<span> {{d.group}} {{d.hanabusa}} {{d.sts}}</span></label>
+              </option>
+              <!-- <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                  Option one is this and that&mdash;be sure to include why it's great
+                </label>
+              </div> -->
+            </select>
+          </div>
+
+        </div>
+      </div>
+  </body>
+</html>
+<script type="text/javascript" charset="utf-8" async defer>
+    $(document).ready(function() {
+       
+    });  
+</script>
