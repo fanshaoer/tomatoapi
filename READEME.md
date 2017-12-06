@@ -1,2 +1,2 @@
 # tomato api
-angular learing project
+Angular learing project
